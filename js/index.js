@@ -7,7 +7,7 @@ var playerTurn,
     prev_play,
     strict;
 
-var audios = [];
+var audios = []; // Hacky way of getting around shonky HTML audio problems
 audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'));
 audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'));
 audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'));
@@ -37,7 +37,7 @@ function playSequence(length) {
 
 function lightUp(number, duration){
   $("#" + number).addClass("bright");
-  var aud = prev_play === number ? (number * 2) - 2 : (number * 2) - 1;
+  var aud = prev_play === number ? (number * 2) - 2 : (number * 2) - 1; // See hacky audio thing above
   audios[aud].play();
   prev_play = number;
   setTimeout(function(){
