@@ -4,18 +4,14 @@ var playerTurn,
     i,
     turn,
     onTimer,
-    prev_play,
     strict;
 
-var audios = []; // Hacky way of getting around shonky HTML audio problems
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'));
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'));
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'));
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'));
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'));
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'));
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'));
-audios.push(new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'));
+var audios = [];
+
+audios.push(new Howl({ src: ['https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'] }));
+audios.push(new Howl({ src: ['https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'] }));
+audios.push(new Howl({ src: ['https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'] }));
+audios.push(new Howl({ src: ['https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'] }));
 
 function playSequence(length) {
   playerTurn = false;
@@ -28,7 +24,6 @@ function playSequence(length) {
     if (i === length){
       i = 0;
       playerTurn = true;
-      prev_play = 0;
       $('body').removeClass();
       clearInterval(onTimer);
     }
@@ -37,9 +32,7 @@ function playSequence(length) {
 
 function lightUp(number, duration){
   $("#" + number).addClass("bright");
-  var aud = prev_play === number ? (number * 2) - 2 : (number * 2) - 1; // See hacky audio thing above
-  audios[aud].play();
-  prev_play = number;
+  audios[number-1].play();
   setTimeout(function(){
     $("#" + number).removeClass("bright");
   }, duration);
