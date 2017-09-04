@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Simon Says</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div id="board">
+  <div id="victory">WINNER<br><span>Good Job</span></div>
+  <div class="row">
+    <div class="button red" id="1"></div>
+    <div class="button blue" id="2"></div>
+  </div>
+  <div class="row">
+    <div class="button green" id="3"></div>
+    <div class="button yellow" id="4"></div>
+  </div>
+</div>
+<div id="levelDisplay">
+  <div>LEVEL:</div>
+  <div id="levelCount"></div>
+</div>
+<div id="buttons">
+  <div id="start" class="srbutton">Start</div>
+  <div id="reset" class="srbutton">Reset</div>
+</div>
+<div id="controls">
+  <div class="label">Strict Mode:</div>
+  <div id="strictSwitch">
+    <label class="switch">
+      <input type="checkbox" id="strictCheck">
+      <span class="slider round"></span>
+    </label>
+    <div class="sublabel">(One wrong guess and you lose)</div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>
